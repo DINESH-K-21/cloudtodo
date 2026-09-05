@@ -20,7 +20,7 @@ jobs:
       - name: deploy panna porom
         run :  echo "Deploying the application..."
       - name: docker image build panna porom
-        run : docker build -t dineshk1234/cloudtodo
+        run: docker build -t dineshk1234/cloudtodo:latest .
       - name : docker login
         uses: docker/login-action@v2
         with:
