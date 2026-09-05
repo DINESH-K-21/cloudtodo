@@ -3,8 +3,11 @@ on:
   push:
     branches:
       - main
+
+env:
+  docker-image-name : dineshk1234/cloudtodo:latest
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: code checkout pannu 
@@ -20,7 +23,7 @@ jobs:
       - name: deploy panna porom
         run :  echo "Deploying the application..."
       - name: docker image build panna porom
-        run: docker build -t dineshk1234/cloudtodo:latest .
+        run: docker build -t ${{ env.docker-image-name }} .
       - name : docker login
         uses: docker/login-action@v2
         with:
@@ -28,4 +31,20 @@ jobs:
           password: ${{ secrets.DOCKERPASSWORD }}
 
       - name: docker image push panna porom
-        run: docker push dineshk1234/cloudtodo:latest
+        run: docker push ${{ env.docker-image-name }} 
+  
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ssh name
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ vars.HOSTIP }}
+          username: my-ec2-instance
+          key: ${{ secrets.AWSEC2KEY }}
+          port: 22
+          script: |
+            echo "Deploying the application on the server..."
+            docker pull ${{ env.docker-image-name }}
+           
+           
