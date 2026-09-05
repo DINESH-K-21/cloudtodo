@@ -41,7 +41,7 @@ jobs:
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ vars.HOSTIP }}
-          username: my-ec2-instance
+          username: ubuntu
           key: ${{ secrets.AWSEC2KEY }}
           port: 22
           script: |
