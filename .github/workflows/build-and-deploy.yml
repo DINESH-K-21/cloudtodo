@@ -8,14 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: code checkout pannu 
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
       - name: code irukutha
         run : ls
       - name: node irukkiya
         run : node --version
       - name: package install panna porom
         run : npm install
-      - name: Build panna porom
-        run : npm start
+      # - name: Build panna porom
+      #   run : npm start
       - name: deploy panna porom
         run :  echo "Deploying the application..."
