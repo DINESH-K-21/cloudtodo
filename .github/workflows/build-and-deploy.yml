@@ -5,7 +5,13 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: code checkout pannu 
+        uses: actions/checkout@v7
+      - name: code irukutha
+        run : ls
+      - name: package install panna porom
+        run : npm install
       - name: Build panna porom
         run : npm start
-      - name : deploy panna porom
+      - name: deploy panna porom
         run :  echo "Deploying the application..."
