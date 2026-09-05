@@ -1,0 +1,11 @@
+name: cloudapp run and deploy
+on:
+  workflow_dispatch:
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build panna porom
+        run : npm start
+      - name : deploy panna porom
+        run :  echo "Deploying the application..."
