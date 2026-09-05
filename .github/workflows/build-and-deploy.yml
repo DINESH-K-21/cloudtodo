@@ -26,3 +26,6 @@ jobs:
         with:
           username: ${{ vars.DOCKERUSERNAME }}
           password: ${{ secrets.DOCKERPASSWORD }}
+
+      - name: docker image push panna porom
+        run: docker push dineshk1234/cloudtodo:latest
