@@ -34,6 +34,8 @@ jobs:
         run: docker push ${{ env.docker-image-name }} 
   
   deploy:
+    env:
+      docker-container-name: cloudtodo-conatiner
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -46,6 +48,10 @@ jobs:
           port: 22
           script: |
             echo "Deploying the application on the server..."
+            docker rmi ${{ env.docker-image-name }} 
             docker pull ${{ env.docker-image-name }}
+            docker stop ${{ env. docker-container-name }}
+            docker rm ${{ env. docker-container-name }}
+            docker run -d -p 3500:3700 --name=${{ env. docker-container-name }} ${{ env.docker-image-name }}
            
            
