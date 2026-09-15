@@ -1,3 +1,12 @@
+async function loadConfig() {
+    const response = await fetch("/api/config");
+    const config = await response.json();
+
+    document.getElementById("appTitle").textContent = config.title;
+}
+
+loadConfig();
+
 async function loadTasks() {
 
     const response = await fetch("/api/tasks");
@@ -6,7 +15,6 @@ async function loadTasks() {
 
     displayTasks(tasks);
 }
-
 
 function displayTasks(tasks) {
 

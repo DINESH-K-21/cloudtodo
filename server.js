@@ -1,7 +1,11 @@
+require("dotenv").config();
+
 const express = require("express");
 
 const app = express();
-const PORT = 3700;
+
+const PORT = process.env.PORT || 3700;
+const APP_TITLE = process.env.APP_TITLE || "Task Manager";
 
 app.use(express.json());
 app.use(express.static("public"));
@@ -14,7 +18,14 @@ let tasks = [
     }
 ];
 
-// GET all tasks
+
+app.get("/api/config", (req, res) => {
+    res.json({
+        title: APP_TITLE
+    });
+});
+
+
 app.get("/api/tasks", (req, res) => {
     res.json(tasks);
 });
