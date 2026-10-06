@@ -8,7 +8,7 @@ test('GET /api/config returns the configured app title', async () => {
   const res = await request(app).get('/api/config');
 
   assert.equal(res.status, 200);
-  assert.equal(res.body.title, 'Default Name');
+  assert.equal(res.body.title, 'CLoud App');
 });
 
 test('POST /api/tasks creates a new task', async () => {
