@@ -5,7 +5,7 @@ const express = require("express");
 const app = express();
 
 const PORT = process.env.PORT || 3700;
-const APP_TITLE = process.env.APP_TITLE || "Task Manager";
+const APP_TITLE = process.env.APP_TITLE || "Default Name";
 
 app.use(express.json());
 app.use(express.static("public"));
@@ -56,6 +56,10 @@ app.delete("/api/tasks/:id", (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-});
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server running at http://localhost:${PORT}`);
+    });
+}
+
+module.exports = { app, PORT };
