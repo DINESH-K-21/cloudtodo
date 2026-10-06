@@ -5,7 +5,7 @@ const express = require("express");
 const app = express();
 
 const PORT = process.env.PORT || 3700;
-const APP_TITLE = process.env.APP_TITLE || "Cloud App";
+const APP_TITLE = process.env.APP_TITLE || "Cloud Appp";
 
 app.use(express.json());
 app.use(express.static("public"));
